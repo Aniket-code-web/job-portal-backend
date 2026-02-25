@@ -1,0 +1,7 @@
+package com.aniket.Job_portal_backend.exception;
+
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
