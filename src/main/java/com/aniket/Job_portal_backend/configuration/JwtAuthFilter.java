@@ -24,6 +24,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
+
+        // ✅ skip preflight requests
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            return true;
+        }
+
         return request.getServletPath().equals("/users/login")
                 || (request.getServletPath().equals("/users") && request.getMethod().equals("POST"));
     }
