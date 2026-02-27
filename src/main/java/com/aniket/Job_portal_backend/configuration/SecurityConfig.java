@@ -52,10 +52,9 @@ public class SecurityConfig {
 
         configuration.setAllowCredentials(true);
 
-        configuration.setAllowedOrigins(List.of(
-                "http://localhost:5173", // local
-                "https://job-portal-frontend-pied-ten.vercel.app",
-                "https://job-portal-frontend-gv5gqgrch-aniket-munis-projects.vercel.app"
+        configuration.setAllowedOriginPatterns(List.of(
+                "http://localhost:5173",
+                "https://*.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
