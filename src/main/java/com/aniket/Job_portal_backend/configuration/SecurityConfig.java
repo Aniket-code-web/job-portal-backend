@@ -33,12 +33,18 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
                 .authorizeHttpRequests(auth -> auth
+
+                        // ✅ allow preflight requests
+                        .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // public endpoints
                         .requestMatchers(
                                 "/users/login",
                                 "/users",
                                 "/jobs/**",
-                                "/uploads/**"   // ✅ ADDED THIS LINE
+                                "/uploads/**"
                         ).permitAll()
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
