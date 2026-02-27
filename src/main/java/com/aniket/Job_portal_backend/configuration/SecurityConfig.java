@@ -46,14 +46,23 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ CORS configuration
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-        configuration.setAllowedMethods(List.of("*"));
-        configuration.setAllowedHeaders(List.of("*"));
+
         configuration.setAllowCredentials(true);
+
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173", // local
+                "https://job-portal-frontend-pied-ten.vercel.app",
+                "https://job-portal-frontend-gv5gqgrch-aniket-munis-projects.vercel.app"
+        ));
+
+        configuration.setAllowedMethods(List.of(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+        ));
+
+        configuration.setAllowedHeaders(List.of("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
