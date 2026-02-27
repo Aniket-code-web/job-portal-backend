@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://job-portal-frontend-gv5gqgrch-aniket-munis-projects.vercel.app")
+                        .allowedOrigins("https://job-portal-frontend-gv5gqgrch-aniket-munis-projects.vercel.app/")
                         .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true);
